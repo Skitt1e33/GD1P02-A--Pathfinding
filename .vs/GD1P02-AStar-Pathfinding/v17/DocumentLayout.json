@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\",
+  "WorkspaceRootPath": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Graph.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Graph.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{80E1AEBD-987F-4C45-BADE-92BAFEEE5207}|GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding.vcxproj|solutionrelative:GD1P02-AStar-Pathfinding\\Graph.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,54 +30,52 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Node.cpp",
-              "DocumentMoniker": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp",
+              "DocumentMoniker": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp",
               "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Node.cpp",
-              "ToolTip": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp",
+              "ToolTip": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.cpp",
               "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Node.cpp",
               "ViewState": "AgIAADgAAAAAAAAAAAAYwFMAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-19T23:01:08.944Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Node.h",
-              "DocumentMoniker": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h",
-              "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Node.h",
-              "ToolTip": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h",
-              "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Node.h",
-              "ViewState": "AgIAABwAAAAAAAAAAAAYwGEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-19T22:40:21.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T23:01:08.944Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Node.h",
+              "DocumentMoniker": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h",
+              "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Node.h",
+              "ToolTip": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Node.h",
+              "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Node.h",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwGEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-19T22:40:21.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Graph.cpp",
-              "DocumentMoniker": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp",
+              "DocumentMoniker": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp",
               "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Graph.cpp",
-              "ToolTip": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp",
+              "ToolTip": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.cpp",
               "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Graph.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-19T22:48:47.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Graph.h",
-              "DocumentMoniker": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h",
+              "DocumentMoniker": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h",
               "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Graph.h",
-              "ToolTip": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h",
+              "ToolTip": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Graph.h",
               "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Graph.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -86,16 +84,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp",
+              "DocumentMoniker": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp",
               "RelativeDocumentMoniker": "GD1P02-AStar-Pathfinding\\Main.cpp",
-              "ToolTip": "C:\\Users\\Nevan\\source\\repos\\GD1P02-AStar-Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp",
+              "ToolTip": "C:\\Users\\windo\\GD1P02-A--Pathfinding\\GD1P02-AStar-Pathfinding\\Main.cpp",
               "RelativeToolTip": "GD1P02-AStar-Pathfinding\\Main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-19T22:39:48.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-19T22:39:48.162Z"
             }
           ]
         }
