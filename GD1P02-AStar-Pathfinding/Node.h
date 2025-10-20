@@ -1,0 +1,97 @@
+#pragma once
+
+// Type of node instantiated as.
+enum NodeType
+{
+	WALL,
+	CLEAR,
+	EXIT,
+	ENTRANCE,
+	ITEM
+};
+
+// Contains all neighbors of a node.
+//@brief up, down, left, right
+struct Neighbors
+{
+	Node* up = nullptr;
+	Node* right = nullptr;
+	Node* down = nullptr;
+	Node* left = nullptr;
+	Node* upleft = nullptr;
+	Node* upright = nullptr;
+	Node* downleft = nullptr;
+	Node* downright = nullptr;
+};
+
+struct Position
+{
+	int x = 0;
+	int y = 0;
+};
+
+class Node
+{
+public:
+	Node();
+	~Node();
+
+#pragma region Getters
+	// Returns x and y position in a position struct.
+	//@return Position struct containing x and y position of node.
+	Position getPos();
+
+	// Returns tile type.
+	NodeType getTileType();
+
+	// Returns struct of all neighboring nodes.
+	//@return Neighbors struct containing all neighboring nodes.
+	Neighbors getNeighbors();
+#pragma endregion
+
+#pragma region Setters
+	// Set x and y position.
+	//@brief Overrides previous location.
+	void setPos(int _x, int _y);
+
+	// Set x for node.
+	void setX(int _x);
+
+	// Set y for node.
+	void setY(int _y);
+
+	// Sets tile type for node.
+	void setTileType(NodeType _type);
+
+	// Sets left neighbor to given node pointer
+	void setLeft(Node* _node);
+
+	// Sets right neighbor to given node pointer
+	void setRight(Node* _node);
+
+	// Sets upper neighbor to given node pointer
+	void setUp(Node* _node);
+
+	// Sets lower neighbor to given node pointer
+	void setDown(Node* _node);
+
+
+	// Sets upper left neighbor to given node pointer
+	void setUpLeft(Node* _node);
+
+	// Sets upper right neighbor to given node pointer
+	void setUpRight(Node* _node);
+
+	// Sets lower left neighbor to given node pointer
+	void setDownLeft(Node* _node);
+
+	// Sets lower right neighbor to given node pointer
+	void setDownRight(Node* _node);
+#pragma endregion
+
+private:
+	Neighbors neighbors;
+	NodeType tileType;
+	Position pos;
+};
+
