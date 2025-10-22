@@ -1,16 +1,10 @@
 #include "Graph.h"
 
-void Graph::loadMap()
+void Graph::loadMap(std::string _filepath)
 {
-    unload();
-
-    currentLevel = _filePath;
-
-    actors = new std::vector<Actor*>;
-
     std::string line;
     std::ifstream levelFile;
-    levelFile.open("Levels/" + _filePath);
+    levelFile.open("ExampleMaps/" + _filepath);
 
     if (!levelFile.is_open()) return;
 
@@ -26,35 +20,47 @@ void Graph::loadMap()
         {
             char actorChar = line[x];
 
-            if (actorChar != 'o' && actorChar != 'm') { actors->push_back(createActor(actorChar, x, y)); }
-            else if (actorChar == 'm')
+            switch (actorChar)
             {
-                // Sets moving platform to move between spawn point and next recorded 'm' character location
-                MovingPlatform* newPlat = new MovingPlatform(x * 30, 0);
-                newPlat->setPosition(sf::Vector2f(x * 30, y * 30));
-                actorChar = line[++x];
-                while (actorChar != 'm')
-                {
-                    actorChar = line[++x];
-                }
-                newPlat->setEnd(x * 30);
-                actors->push_back(newPlat);
+            // wall
+            case 'w':
+
+                break;
+                
+            // clear
+            case '.':
+
+                break;
+
+            // start
+            case 's':
+
+                break;
+
+            // destination
+            case 'x':
+
+                break;
             }
         }
         y++;
     }
 
     levelFile.close();
+}
 
-    for (int i = 0; i < actors->size() - 1; ++i)
+void Graph::unload(int _index)
+{
+    for (int i = 0; i < levels[_index].nodes.size(); ++i)
     {
-        if (actors->at(i)->getClassType() == ENEMY)
-        {
-            dynamic_cast<Enemy*>(actors->at(i))->setPlayer(player);
-        }
+        delete levels[_index].nodes[i];
     }
+    levels[_index].nodes.clear();
+}
 
-    cam->setFocus(player);
-
-    loaded = true;
+Node* Graph::createNode(NodeType _type)
+{
+    Node* newNode = new Node;
+    newNode->setTileType(_type);
+    return newNode;
 }
