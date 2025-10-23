@@ -18,9 +18,44 @@ NodeType Node::getTileType()
     return tileType;
 }
 
-Neighbors Node::getNeighbors()
+Node* Node::getUp()
 {
-    return neighbors;
+    return up;
+}
+
+Node* Node::getDown()
+{
+    return down;
+}
+
+Node* Node::getLeft()
+{
+    return left;
+}
+
+Node* Node::getRight()
+{
+    return right;
+}
+
+Node* Node::getUpRight()
+{
+    return upright;
+}
+
+Node* Node::getDownLeft()
+{
+    return downleft;
+}
+
+Node* Node::getUpLeft()
+{
+    return upleft;
+}
+
+Node* Node::getDownRight()
+{
+    return downright;
 }
 
 void Node::setPos(int _x, int _y)
@@ -46,40 +81,40 @@ void Node::setTileType(NodeType _type)
 
 void Node::setLeft(Node* _node)
 {
-    neighbors.left = _node;
+    left = _node;
 }
 
 void Node::setRight(Node* _node)
 {
-    neighbors.right = _node;
+    right = _node;
 }
 
 void Node::setUp(Node* _node)
 {
-    neighbors.up = _node;
+    up = _node;
 }
 
 void Node::setDown(Node* _node)
 {
-    neighbors.down = _node;
+    down = _node;
 }
 
 void Node::setUpLeft(Node* _node)
 {
-    neighbors.upleft = _node;
+    upleft = _node;
 }
 
 void Node::setUpRight(Node* _node)
 {
-    neighbors.upright = _node;
+    upright = _node;
 }
 
 void Node::setDownLeft(Node* _node)
 {
-    neighbors.downleft = _node;
+    downleft = _node;
 }
 
 void Node::setDownRight(Node* _node)
 {
-    neighbors.downright = _node;
+    downright = _node;
 }

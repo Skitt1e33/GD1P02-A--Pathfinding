@@ -10,20 +10,6 @@ enum NodeType
 	ITEM
 };
 
-// Contains all neighbors of a node.
-//@brief up, down, left, right
-struct Neighbors
-{
-	Node* up = nullptr;
-	Node* right = nullptr;
-	Node* down = nullptr;
-	Node* left = nullptr;
-	Node* upleft = nullptr;
-	Node* upright = nullptr;
-	Node* downleft = nullptr;
-	Node* downright = nullptr;
-};
-
 struct Position
 {
 	int x = 0;
@@ -46,7 +32,21 @@ public:
 
 	// Returns struct of all neighboring nodes.
 	//@return Neighbors struct containing all neighboring nodes.
-	Neighbors getNeighbors();
+	Node* getUp();
+
+	Node* getDown();
+
+	Node* getLeft();
+
+	Node* getRight();
+
+	Node* getUpRight();
+
+	Node* getDownLeft();
+
+	Node* getUpLeft();
+
+	Node* getDownRight();
 #pragma endregion
 
 #pragma region Setters
@@ -90,8 +90,15 @@ public:
 #pragma endregion
 
 private:
-	Neighbors neighbors;
 	NodeType tileType;
 	Position pos;
+	Node* up = nullptr;
+	Node* right = nullptr;
+	Node* down = nullptr;
+	Node* left = nullptr;
+	Node* upleft = nullptr;
+	Node* upright = nullptr;
+	Node* downleft = nullptr;
+	Node* downright = nullptr;
 };
 
