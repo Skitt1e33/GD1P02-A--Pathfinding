@@ -58,6 +58,11 @@ Node* Node::getDownRight()
     return downright;
 }
 
+bool Node::isExpanded()
+{
+    return expanded;
+}
+
 void Node::setPos(int _x, int _y)
 {
     pos.x = _x;
@@ -117,4 +122,9 @@ void Node::setDownLeft(Node* _node)
 void Node::setDownRight(Node* _node)
 {
     downright = _node;
+}
+
+void Node::expand()
+{
+    expanded = true;
 }

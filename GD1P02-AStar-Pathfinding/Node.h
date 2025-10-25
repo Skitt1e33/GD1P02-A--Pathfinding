@@ -7,7 +7,8 @@ enum NodeType
 	CLEAR,
 	EXIT,
 	ENTRANCE,
-	ITEM
+	ITEM,
+	PATH
 };
 
 struct Position
@@ -30,23 +31,32 @@ public:
 	// Returns tile type.
 	NodeType getTileType();
 
-	// Returns struct of all neighboring nodes.
-	//@return Neighbors struct containing all neighboring nodes.
+	// Returns upper neighbor node.
 	Node* getUp();
 
+	// Returns lower neighbor node.
 	Node* getDown();
 
+	// Returns left neighbor node.
 	Node* getLeft();
 
+	// Returns right neighbor node.
 	Node* getRight();
 
+	// Returns upper right neighbor node.
 	Node* getUpRight();
 
+	// Returns lower left neighbor node.
 	Node* getDownLeft();
 
+	// Returns upper left neighbor node.
 	Node* getUpLeft();
 
+	// Returns lower right neighbor node.
 	Node* getDownRight();
+
+	// Returns if node has been expanded
+	bool isExpanded();
 #pragma endregion
 
 #pragma region Setters
@@ -87,6 +97,9 @@ public:
 
 	// Sets lower right neighbor to given node pointer
 	void setDownRight(Node* _node);
+
+	// Marks node as expanded
+	void expand();
 #pragma endregion
 
 private:
@@ -100,5 +113,6 @@ private:
 	Node* upright = nullptr;
 	Node* downleft = nullptr;
 	Node* downright = nullptr;
+	bool expanded = false;
 };
 

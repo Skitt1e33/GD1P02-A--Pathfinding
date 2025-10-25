@@ -1,5 +1,11 @@
 #include "Graph.h"
 
+void setColour(int textColor, int bgColor)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, (bgColor << 4) | textColor);
+}
+
 Graph::Graph()
 {
 }
@@ -100,46 +106,62 @@ void Graph::loadMap(std::string _filepath)
 
 void Graph::printMap(int _index)
 {
-    if (_index < 0 || _index > levels.size())
+    setColour(4,0);
+    if (_index < 0 || _index > levels.size()-1)
     {
         std::cout << "index out of range" << std::endl;
         return;
     }
-    map level = *levels[_index];
+    map level = *levels[0];// ISSUE HERE
 
     if (level.entranceCount > 1 || level.exitCount > 1)
     {
-        std::cout << "Invalid Map" << std::endl;
+        std::cout << "Invalid Map: too many entrances or exits" << std::endl;
+    }
+
+    if (level.entranceCount < 1 || level.exitCount < 1)
+    {
+        std::cout << "Invalid Map: no entrance or exit" << std::endl;
     }
 
     int x = 0;
     int y = 0;
+    int items = 0;
 
     for (int i = 0; i < level.nodes.size(); ++i)
     {
-        int items = 0;
         char printChar = '.';
 
         switch (level.nodes[i]->getTileType())
         {
         case CLEAR:
+            setColour(7, 0);
             printChar = '.';
             break;
 
         case ENTRANCE:
+            setColour(2, 0);
             printChar = 's';
             break;
 
         case EXIT:
+            setColour(12, 0);
             printChar = 'x';
             break;
 
         case WALL:
+            setColour(3, 0);
             printChar = 'w';
             break;
 
         case ITEM:
+            setColour(6, 0);
             printChar = 97+items++;
+            break;
+
+        case PATH:
+            setColour(6, 0);
+            printChar = 97 + items++;
             break;
         }
 
@@ -148,9 +170,10 @@ void Graph::printMap(int _index)
             ++y;
             std::cout << std::endl;
         }
-        std::cout << printChar;
+        std::cout << printChar << " ";
     }
 
+    setColour(7,0);
 }
 
 void Graph::unload(int _index)
@@ -160,11 +183,4 @@ void Graph::unload(int _index)
         delete levels[_index]->nodes[i];
     }
     levels[_index]->nodes.clear();
-}
-
-Node* Graph::createNode(NodeType _type)
-{
-    Node* newNode = new Node;
-    newNode->setTileType(_type);
-    return newNode;
 }

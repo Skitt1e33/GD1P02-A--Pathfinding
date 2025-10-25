@@ -3,7 +3,7 @@
 int main()
 {
 	Graph graph;
-	graph.loadMap("ValidMap1");
+	graph.loadMap("InvalidMap1.txt");
 
 	graph.printMap(0);
 
