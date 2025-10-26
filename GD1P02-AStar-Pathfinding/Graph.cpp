@@ -101,28 +101,30 @@ void Graph::loadMap(std::string _filepath)
 
     levelFile.close();
 
+    setColour(7, 0);
     std::cout << "Map Loaded Successfully" << std::endl;
+
+    setColour(4, 0);
+    if (newMap->entranceCount > 1 || newMap->exitCount > 1)
+    {
+        std::cout << "Invalid Map: too many entrances/exits" << std::endl;
+    }
+
+    if (newMap->entranceCount < 1 || newMap->exitCount < 1)
+    {
+        std::cout << "Invalid Map: missing entrance/exit" << std::endl;
+    }
 }
 
 void Graph::printMap(int _index)
 {
-    setColour(4,0);
     if (_index < 0 || _index > levels.size()-1)
     {
         std::cout << "index out of range" << std::endl;
         return;
     }
-    map level = *levels[0];// ISSUE HERE
+    map level = *levels[_index];
 
-    if (level.entranceCount > 1 || level.exitCount > 1)
-    {
-        std::cout << "Invalid Map: too many entrances or exits" << std::endl;
-    }
-
-    if (level.entranceCount < 1 || level.exitCount < 1)
-    {
-        std::cout << "Invalid Map: no entrance or exit" << std::endl;
-    }
 
     int x = 0;
     int y = 0;
@@ -136,7 +138,6 @@ void Graph::printMap(int _index)
         {
         case CLEAR:
             setColour(7, 0);
-            printChar = '.';
             break;
 
         case ENTRANCE:
@@ -183,4 +184,29 @@ void Graph::unload(int _index)
         delete levels[_index]->nodes[i];
     }
     levels[_index]->nodes.clear();
+}
+
+void Graph::depthFirst(int _index)
+{
+    std::vector<Node*> itemList;
+    getItems(itemList, _index);
+
+
+}
+
+float Graph::getDistance(Node* _n1, Node* _n2)
+{
+    float x = _n2->getPos().x - _n1->getPos().x;
+    float y = _n2->getPos().y - _n1->getPos().y;
+
+    return sqrt(pow(x,2)+pow(y,2));
+}
+
+void Graph::getItems(std::vector<Node*>& _itemList, int _index)
+{
+    map level = *levels[_index];
+    for (int i = 0; i < level.nodes.size(); ++i)
+    {
+        if (level.nodes[i]->getTileType() == ITEM) _itemList.push_back(level.nodes[i]);
+    }
 }

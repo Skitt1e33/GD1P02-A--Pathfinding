@@ -12,9 +12,9 @@ struct map
 {
 	std::vector<Node*> nodes;
 	bool valid = false;
-	int entranceCount;
-	int exitCount;
-	int itemCount;
+	char entranceCount = 0;
+	char exitCount = 0;
+	char itemCount = 0;
 };
 
 class Graph
@@ -49,6 +49,14 @@ public:
 	//@brief Searches based on an A* algorithm.
 	//@param _index: index of map to search
 	void aStar(int _index);
+
+	// Returns euclidean distance between two given nodes
+	//@param _n1: first node
+	//@param _n2: second node
+	float getDistance(Node* _n1, Node* _n2);
+
+	// Passes all items on a map into a given node list
+	void getItems(std::vector<Node*>& _itemList, int _index);
 private:
 	std::vector<map*> levels;
 };
