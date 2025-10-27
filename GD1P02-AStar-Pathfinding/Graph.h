@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <list>
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -39,6 +40,8 @@ public:
 	//@brief searches using a depth first algorithm.
 	//@param _index: index of map to search
 	void depthFirst(int _index);
+
+	void dFSRecursion(std::vector<Node*>& _graph, int _index);
 
 	// Marks a possible path between all items. Ignores walls.
 	//@brief searches using a breadth first algorithm.

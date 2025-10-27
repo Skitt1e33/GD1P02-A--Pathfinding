@@ -57,6 +57,9 @@ public:
 
 	// Returns if node has been expanded
 	bool isExpanded();
+
+	// Returns print character
+	char getChar();
 #pragma endregion
 
 #pragma region Setters
@@ -100,6 +103,12 @@ public:
 
 	// Marks node as expanded
 	void expand();
+
+	// Marks node as unexpanded
+	void resetNode();
+
+	// Sets print character
+	void setChar(char _print);
 #pragma endregion
 
 private:
@@ -113,6 +122,7 @@ private:
 	Node* upright = nullptr;
 	Node* downleft = nullptr;
 	Node* downright = nullptr;
+	char printChar = '.';
 	bool expanded = false;
 };
 

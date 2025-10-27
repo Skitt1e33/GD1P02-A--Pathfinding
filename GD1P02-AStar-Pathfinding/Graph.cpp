@@ -66,27 +66,32 @@ void Graph::loadMap(std::string _filepath)
             // wall
             case 'w':
                 newNode->setTileType(WALL);
+                newNode->setChar('w');
                 break;
                 
             // clear
             case '.':
                 newNode->setTileType(CLEAR);
+                newNode->setChar('.');
                 break;
 
             // start
             case 's':
                 newNode->setTileType(ENTRANCE);
                 newMap->entranceCount++;
+                newNode->setChar('s');
                 break;
 
             // destination
             case 'x':
                 newNode->setTileType(EXIT);
                 newMap->exitCount++;
+                newNode->setChar('x');
                 break;
 
             default:
                 newNode->setTileType(ITEM);
+                newNode->setChar(97 + newMap->itemCount);
                 newMap->itemCount++;
                 break;
             }
@@ -125,15 +130,10 @@ void Graph::printMap(int _index)
     }
     map level = *levels[_index];
 
-
-    int x = 0;
     int y = 0;
-    int items = 0;
 
     for (int i = 0; i < level.nodes.size(); ++i)
     {
-        char printChar = '.';
-
         switch (level.nodes[i]->getTileType())
         {
         case CLEAR:
@@ -142,27 +142,22 @@ void Graph::printMap(int _index)
 
         case ENTRANCE:
             setColour(2, 0);
-            printChar = 's';
             break;
 
         case EXIT:
             setColour(12, 0);
-            printChar = 'x';
             break;
 
         case WALL:
             setColour(3, 0);
-            printChar = 'w';
             break;
 
         case ITEM:
             setColour(6, 0);
-            printChar = 97+items++;
             break;
 
         case PATH:
             setColour(6, 0);
-            printChar = 97 + items++;
             break;
         }
 
@@ -171,9 +166,10 @@ void Graph::printMap(int _index)
             ++y;
             std::cout << std::endl;
         }
-        std::cout << printChar << " ";
+        std::cout << level.nodes[i]->getChar() << " ";
     }
 
+    std::cout << std::endl;
     setColour(7,0);
 }
 
@@ -191,7 +187,38 @@ void Graph::depthFirst(int _index)
     std::vector<Node*> itemList;
     getItems(itemList, _index);
 
+    std::cout << "visit order: ";
+    dFSRecursion(itemList, 0);
 
+    for (int i = 0; i < itemList.size(); ++i)
+    {
+        itemList[i]->resetNode();
+    }
+}
+
+void Graph::dFSRecursion(std::vector<Node*>& _graph, int _index)
+{
+    _graph[_index]->expand();
+    std::cout << _graph[_index]->getChar() << ", ";
+    Node* node = _graph[_index];
+    _graph.erase(_graph.begin()+_index);
+
+    int closestNode = 0;
+    float closestDist = FLT_MAX;
+
+    for (int j = 0; j < _graph.size(); ++j)
+    {
+        if (getDistance(node, _graph[j]) < closestDist)
+        {
+            closestNode = j;
+            closestDist = getDistance(node, _graph[j]);
+        }
+    }
+
+    for (int i = 0; i < _graph.size(); ++i)
+    {
+        dFSRecursion(_graph, closestNode);
+    }
 }
 
 float Graph::getDistance(Node* _n1, Node* _n2)

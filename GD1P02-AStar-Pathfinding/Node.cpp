@@ -63,6 +63,11 @@ bool Node::isExpanded()
     return expanded;
 }
 
+char Node::getChar()
+{
+    return printChar;
+}
+
 void Node::setPos(int _x, int _y)
 {
     pos.x = _x;
@@ -127,4 +132,14 @@ void Node::setDownRight(Node* _node)
 void Node::expand()
 {
     expanded = true;
+}
+
+void Node::resetNode()
+{
+    expanded = false;
+}
+
+void Node::setChar(char _print)
+{
+    printChar = _print;
 }
