@@ -1,9 +1,5 @@
 #pragma once
-#include <vector>
-#include <list>
-#include <fstream>
-#include <string>
-#include <iostream>
+#include "STLIncludes.h"
 #include <Windows.h>
 #include "Node.h"
 
@@ -41,12 +37,16 @@ public:
 	//@param _index: index of map to search
 	void depthFirst(int _index);
 
+	// Handles searching a given graph in a depth first search fashion recursively.
+	// //@brief Expands a node at a given index then recursively expands the rest of a given graph.
+	//@param _graph: the graph to search
+	//@param _index: index of node to expand
 	void dFSRecursion(std::vector<Node*>& _graph, int _index);
 
 	// Marks a possible path between all items. Ignores walls.
 	//@brief searches using a breadth first algorithm.
 	//@param _index: index of map to search
-	void breadthFirst();
+	void breadthFirst(int _index);
 
 	// Marks an efficient route from the entrance to the exit.
 	//@brief Searches based on an A* algorithm.
@@ -57,6 +57,11 @@ public:
 	//@param _n1: first node
 	//@param _n2: second node
 	float getDistance(Node* _n1, Node* _n2);
+
+	// Returns manhattan distance between two given nodes
+	//@param _n1: first node
+	//@param _n2: second node
+	float getManhattan(Node* _n1, Node* _n2);
 
 	// Passes all items on a map into a given node list
 	void getItems(std::vector<Node*>& _itemList, int _index);

@@ -6,7 +6,7 @@ int main()
 	graph.loadMap("ValidMap1.txt");
 
 	graph.printMap(0);
-	graph.depthFirst(0);
+	graph.breadthFirst(0);
 
 	return 0;
 }

@@ -221,12 +221,55 @@ void Graph::dFSRecursion(std::vector<Node*>& _graph, int _index)
     }
 }
 
+void Graph::breadthFirst(int _index)
+{
+    std::vector<Node*> itemList;
+    getItems(itemList, _index);
+    std::queue<Node*> visitQueue;
+    
+    visitQueue.push(itemList[0]);
+    while (visitQueue.size() > 0)
+    {
+        Node* node = visitQueue.front();
+        visitQueue.pop();
+
+        if (!node->isExpanded())
+        {
+            std::vector<Node*> nodeNeighbors;
+            getItems(nodeNeighbors, _index);
+            std::cout << node->getChar() << ", ";
+            node->expand();
+            for (int i = 0; i < itemList.size(); ++i)
+            {
+                if (!itemList[i]->isExpanded())
+                {
+                    visitQueue.push(itemList[i]);
+                }
+            }
+        }
+        std::cout << "visit queue: "
+    }
+
+    for (int i = 0; i < itemList.size(); ++i)
+    {
+        itemList[i]->resetNode();
+    }
+
+}
+
 float Graph::getDistance(Node* _n1, Node* _n2)
 {
     float x = _n2->getPos().x - _n1->getPos().x;
     float y = _n2->getPos().y - _n1->getPos().y;
 
     return sqrt(pow(x,2)+pow(y,2));
+}
+
+float Graph::getManhattan(Node* _n1, Node* _n2)
+{
+    float x = _n2->getPos().x - _n1->getPos().x;
+    float y = _n2->getPos().y - _n1->getPos().y;
+    return x+y;
 }
 
 void Graph::getItems(std::vector<Node*>& _itemList, int _index)
