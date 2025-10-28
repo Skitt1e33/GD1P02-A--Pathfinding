@@ -20,42 +20,47 @@ NodeType Node::getTileType()
 
 Node* Node::getUp()
 {
-    return up;
+    return neighbors[0];
 }
 
 Node* Node::getDown()
 {
-    return down;
+    return neighbors[4];
 }
 
 Node* Node::getLeft()
 {
-    return left;
+    return neighbors[6];
 }
 
 Node* Node::getRight()
 {
-    return right;
+    return neighbors[2];
 }
 
 Node* Node::getUpRight()
 {
-    return upright;
+    return neighbors[1];
 }
 
 Node* Node::getDownLeft()
 {
-    return downleft;
+    return neighbors[3];
 }
 
 Node* Node::getUpLeft()
 {
-    return upleft;
+    return neighbors[7];
 }
 
 Node* Node::getDownRight()
 {
-    return downright;
+    return neighbors[5];
+}
+
+Node* Node::getNeighbor(int _index)
+{
+    return neighbors[_index];
 }
 
 bool Node::isExpanded()
@@ -66,6 +71,16 @@ bool Node::isExpanded()
 char Node::getChar()
 {
     return printChar;
+}
+
+float Node::getDist()
+{
+    return distance;
+}
+
+float Node::getTotalDist()
+{
+    return totalDist;
 }
 
 void Node::setPos(int _x, int _y)
@@ -91,42 +106,42 @@ void Node::setTileType(NodeType _type)
 
 void Node::setLeft(Node* _node)
 {
-    left = _node;
+    neighbors[6] = _node;
 }
 
 void Node::setRight(Node* _node)
 {
-    right = _node;
+    neighbors[2] = _node;
 }
 
 void Node::setUp(Node* _node)
 {
-    up = _node;
+    neighbors[0] = _node;
 }
 
 void Node::setDown(Node* _node)
 {
-    down = _node;
+    neighbors[4] = _node;
 }
 
 void Node::setUpLeft(Node* _node)
 {
-    upleft = _node;
+    neighbors[7] = _node;
 }
 
 void Node::setUpRight(Node* _node)
 {
-    upright = _node;
+    neighbors[1] = _node;
 }
 
 void Node::setDownLeft(Node* _node)
 {
-    downleft = _node;
+    neighbors[5] = _node;
 }
 
 void Node::setDownRight(Node* _node)
 {
-    downright = _node;
+    neighbors[3] = _node;
 }
 
 void Node::expand()
@@ -142,4 +157,14 @@ void Node::resetNode()
 void Node::setChar(char _print)
 {
     printChar = _print;
+}
+
+void Node::calcDistance(Node* _target)
+{
+    distance = _target->getPos().x - pos.x + _target->getPos().y - pos.y;
+}
+
+void Node::setTotalDist(float _base)
+{
+    totalDist = _base + distance;
 }

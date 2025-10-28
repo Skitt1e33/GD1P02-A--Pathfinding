@@ -157,7 +157,7 @@ void Graph::printMap(int _index)
             break;
 
         case PATH:
-            setColour(6, 0);
+            setColour(18, 0);
             break;
         }
 
@@ -247,7 +247,6 @@ void Graph::breadthFirst(int _index)
                 }
             }
         }
-        std::cout << "visit queue: "
     }
 
     for (int i = 0; i < itemList.size(); ++i)
@@ -255,6 +254,66 @@ void Graph::breadthFirst(int _index)
         itemList[i]->resetNode();
     }
 
+}
+
+void Graph::aStar(int _index)
+{
+    map level = *levels[_index];
+    std::list<Node*> open;
+    float totalCost = 0;
+
+    Node* current = nullptr;
+    Node* target = nullptr;
+    // set current node to entrance tile
+    for (int i = 0; i < level.nodes.size(); ++i)
+    {
+        if (level.nodes[i]->getTileType() == ENTRANCE)
+        {
+            current = level.nodes[i];
+        }
+        if (level.nodes[i]->getTileType() == EXIT)
+        {
+            target = level.nodes[i];
+        }
+    }
+
+    for (int i = 0; i < level.nodes.size(); ++i)
+    {
+        level.nodes[i]->calcDistance(target);
+    }
+
+    open.push_back(current);
+    while (target != current)
+    {
+        if (open.size() <= 0)
+        {
+            std::cout << "Error, no path to exit." << std::endl;
+            break;
+        }
+        open.front()->expand();
+        current->setTileType(PATH);
+        current = open.front();
+        open.pop_front();
+        for (int i = 0; i < 8; ++i)
+        {
+            Node* neighbor = current->getNeighbor(i);
+            if (neighbor == nullptr) continue;
+            if (neighbor->getTileType() != WALL && !neighbor->isExpanded())
+            {
+                float nodeDist = getManhattan(current, neighbor);
+                for (int j = 0; j < open.size(); ++j)
+                {
+                    if (std::find(open.begin(), open.end(), neighbor) != open.end())
+                    {
+                        neighbor->setTotalDist(totalCost+nodeDist);
+                        totalCost = neighbor->getTotalDist();
+                        break;
+                    }
+                }
+                open.push_back(neighbor);
+            }
+        }
+    }
 }
 
 float Graph::getDistance(Node* _n1, Node* _n2)

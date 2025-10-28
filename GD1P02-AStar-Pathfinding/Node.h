@@ -55,11 +55,22 @@ public:
 	// Returns lower right neighbor node.
 	Node* getDownRight();
 
+	// Returns neighbor node based on given index
+	//@param _index: 0 -> up, 2 -> right, 4 -> down, 6 -> left
+	Node* getNeighbor(int _index);
+
 	// Returns if node has been expanded
 	bool isExpanded();
 
 	// Returns print character
 	char getChar();
+
+	// Returns manhattan distance between this node and exit node.
+	float getDist();
+
+	// Gets and sets total path cost
+	//@brief adds distance fromnode to exit to given base distance.
+	float getTotalDist();
 #pragma endregion
 
 #pragma region Setters
@@ -109,20 +120,20 @@ public:
 
 	// Sets print character
 	void setChar(char _print);
+
+	// Sets manhattan distance to a given target tile
+	void calcDistance(Node* _target);
+
+	void setTotalDist(float _base);
 #pragma endregion
 
 private:
 	NodeType tileType;
 	Position pos;
-	Node* up = nullptr;
-	Node* right = nullptr;
-	Node* down = nullptr;
-	Node* left = nullptr;
-	Node* upleft = nullptr;
-	Node* upright = nullptr;
-	Node* downleft = nullptr;
-	Node* downright = nullptr;
+	Node* neighbors[8] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
 	char printChar = '.';
 	bool expanded = false;
+	float distance = 0;
+	float totalDist = 0;
 };
 
