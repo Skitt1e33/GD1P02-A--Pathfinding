@@ -257,6 +257,12 @@ void Graph::breadthFirst(int _index)
 
 }
 
+
+bool byDist(Node* _n1, Node* _n2)
+{
+    return _n1->getF() < _n2->getF();
+}
+
 void Graph::aStar(int _index)
 {
     map level = *levels[_index];
@@ -291,6 +297,15 @@ void Graph::aStar(int _index)
             std::cout << "Error, no path to exit." << std::endl;
             break;
         }
+        std::cout << "open queue unsorted: ";
+        for (auto const& v : open)
+            std::cout << "(x: " << v->getPos().x << " y: " << v->getPos().y << "), ";
+        std::cout << std::endl;
+        std::sort(open.begin(), open.end(), [](const Node* a, const Node* b) {return a->f < b->f; });
+        std::cout << "open queue sorted: ";
+        for (auto const& v : open)
+            std::cout << "(x: " << v->getPos().x << " y: " << v->getPos().y << "), ";
+        std::cout << std::endl;
         open.front()->expand();
         current->setTileType(PATH);
         current = open.front();
@@ -326,25 +341,6 @@ void Graph::aStar(int _index)
     }
 
 }
-
-//for each node_successor of node_current
-//{
-//    Set successor_current_cost = g(node_current) + w(node_current, node_successor)
-//    if node_successor is in the OPEN list 
-//    {
-//        if g(node_successor) ≤ successor_current_cost continue (to line 20);
-//    }
-//    else if node_successor is in the CLOSED list
-//    {
-//        if g(node_successor) ≤ successor_current_cost continue (to line 20);
-//        Move node_successor from the CLOSED list to the OPEN list
-//    }
-//    else {
-//        Add node_successor to the OPEN list
-//        Set h(node_successor) to be the heuristic distance to node_goal
-// }
-
-
 
 float Graph::getDistance(Node* _n1, Node* _n2)
 {

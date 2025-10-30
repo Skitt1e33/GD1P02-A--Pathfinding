@@ -134,6 +134,15 @@ public:
 	void setPrevPath(Node* _path);
 #pragma endregion
 
+	bool operator < (const Node* _node) const
+	{
+		return f < _node->f;
+	}
+
+	float h = 0;
+	float f = 0;
+	float g = 0;
+
 private:
 	NodeType tileType;
 	Position pos;
@@ -141,8 +150,6 @@ private:
 	Node* prevPath = nullptr;
 	char printChar = '.';
 	bool expanded = false;
-	float h = 0;
-	float f = 0;
-	float g = 0;
+
 };
 
