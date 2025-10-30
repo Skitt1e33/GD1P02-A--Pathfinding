@@ -73,14 +73,24 @@ char Node::getChar()
     return printChar;
 }
 
-float Node::getDist()
+float Node::getH()
 {
-    return distance;
+    return h;
 }
 
-float Node::getTotalDist()
+float Node::getF()
 {
-    return totalDist;
+    return f;
+}
+
+float Node::getG()
+{
+    return g;
+}
+
+Node* Node::getPrevPath()
+{
+    return prevPath;
 }
 
 void Node::setPos(int _x, int _y)
@@ -161,10 +171,17 @@ void Node::setChar(char _print)
 
 void Node::calcDistance(Node* _target)
 {
-    distance = _target->getPos().x - pos.x + _target->getPos().y - pos.y;
+    h = abs(_target->getPos().x - pos.x + _target->getPos().y - pos.y);
+    f = g + h;
 }
 
-void Node::setTotalDist(float _base)
+void Node::setG(float _value)
 {
-    totalDist = _base + distance;
+    g = _value;
+    f = g + h;
+}
+
+void Node::setPrevPath(Node* _path)
+{
+    prevPath = _path;
 }

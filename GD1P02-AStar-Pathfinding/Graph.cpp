@@ -1,4 +1,4 @@
-#include "Graph.h"
+﻿#include "Graph.h"
 
 void setColour(int textColor, int bgColor)
 {
@@ -46,8 +46,9 @@ void Graph::loadMap(std::string _filepath)
 
             if (y > 0)
             {
-                Node* topNode = newMap->nodes[x*(y-1)];
+                Node* topNode = newMap->nodes[x+20*(y-1)];
                 newNode->setUp(topNode);
+                topNode->setDown(newNode);
                 if (topNode->getLeft() != nullptr)
                 {
                     newNode->setUpLeft(topNode->getLeft());
@@ -157,7 +158,7 @@ void Graph::printMap(int _index)
             break;
 
         case PATH:
-            setColour(18, 0);
+            setColour(0, 4);
             break;
         }
 
@@ -283,7 +284,7 @@ void Graph::aStar(int _index)
     }
 
     open.push_back(current);
-    while (target != current)
+    while (current != target)
     {
         if (open.size() <= 0)
         {
@@ -300,21 +301,50 @@ void Graph::aStar(int _index)
             if (neighbor == nullptr) continue;
             if (neighbor->getTileType() != WALL && !neighbor->isExpanded())
             {
-                float nodeDist = getManhattan(current, neighbor);
-                for (int j = 0; j < open.size(); ++j)
+                float tenG = current->getG() + getManhattan(current, neighbor);
+                if (std::find(open.begin(), open.end(), neighbor) != open.end())
                 {
-                    if (std::find(open.begin(), open.end(), neighbor) != open.end())
-                    {
-                        neighbor->setTotalDist(totalCost+nodeDist);
-                        totalCost = neighbor->getTotalDist();
-                        break;
-                    }
+                    if (tenG >= neighbor->getG()) continue;
                 }
-                open.push_back(neighbor);
+                else 
+                {
+                    open.push_front(neighbor);
+                }
+
+                neighbor->setPrevPath(current);
+                neighbor->setG(tenG);
+                neighbor->calcDistance(current);
             }
         }
     }
+
+    Node* reconstructor = target;
+    while (reconstructor->getPrevPath() != nullptr)
+    {
+        reconstructor->setChar('X');
+        reconstructor = reconstructor->getPrevPath();
+    }
+
 }
+
+//for each node_successor of node_current
+//{
+//    Set successor_current_cost = g(node_current) + w(node_current, node_successor)
+//    if node_successor is in the OPEN list 
+//    {
+//        if g(node_successor) ≤ successor_current_cost continue (to line 20);
+//    }
+//    else if node_successor is in the CLOSED list
+//    {
+//        if g(node_successor) ≤ successor_current_cost continue (to line 20);
+//        Move node_successor from the CLOSED list to the OPEN list
+//    }
+//    else {
+//        Add node_successor to the OPEN list
+//        Set h(node_successor) to be the heuristic distance to node_goal
+// }
+
+
 
 float Graph::getDistance(Node* _n1, Node* _n2)
 {
@@ -328,7 +358,7 @@ float Graph::getManhattan(Node* _n1, Node* _n2)
 {
     float x = _n2->getPos().x - _n1->getPos().x;
     float y = _n2->getPos().y - _n1->getPos().y;
-    return x+y;
+    return abs(x+y);
 }
 
 void Graph::getItems(std::vector<Node*>& _itemList, int _index)
@@ -338,4 +368,19 @@ void Graph::getItems(std::vector<Node*>& _itemList, int _index)
     {
         if (level.nodes[i]->getTileType() == ITEM) _itemList.push_back(level.nodes[i]);
     }
+}
+
+void Graph::showNeighbors(int _x, int _y)
+{
+    Node* node = levels[0]->nodes[_x+(20*_y)];
+    node->setChar('X');
+    int count = 0;
+    for (int i = 0; i < 8; ++i)
+    {
+        Node* neighbor = node->getNeighbor(i);
+        if (neighbor == nullptr) continue;
+        neighbor->setTileType(PATH);
+        count++;
+    }
+    std::cout << "node has " << count << " neighbors" << std::endl;
 }

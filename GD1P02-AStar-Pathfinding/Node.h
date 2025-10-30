@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 
 // Type of node instantiated as.
 enum NodeType
@@ -66,11 +67,15 @@ public:
 	char getChar();
 
 	// Returns manhattan distance between this node and exit node.
-	float getDist();
+	float getH();
 
 	// Gets and sets total path cost
 	//@brief adds distance fromnode to exit to given base distance.
-	float getTotalDist();
+	float getF();
+
+	float getG();
+
+	Node* getPrevPath();
 #pragma endregion
 
 #pragma region Setters
@@ -124,16 +129,20 @@ public:
 	// Sets manhattan distance to a given target tile
 	void calcDistance(Node* _target);
 
-	void setTotalDist(float _base);
+	void setG(float _value);
+
+	void setPrevPath(Node* _path);
 #pragma endregion
 
 private:
 	NodeType tileType;
 	Position pos;
 	Node* neighbors[8] = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
+	Node* prevPath = nullptr;
 	char printChar = '.';
 	bool expanded = false;
-	float distance = 0;
-	float totalDist = 0;
+	float h = 0;
+	float f = 0;
+	float g = 0;
 };
 

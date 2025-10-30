@@ -1,6 +1,5 @@
 #pragma once
 #include "STLIncludes.h"
-#include <Windows.h>
 #include "Node.h"
 
 // Contains list of all nodes in a map and whether the map is valid or not.
@@ -65,6 +64,8 @@ public:
 
 	// Passes all items on a map into a given node list
 	void getItems(std::vector<Node*>& _itemList, int _index);
+
+	void showNeighbors(int _x, int _y);
 private:
 	std::vector<map*> levels;
 };
