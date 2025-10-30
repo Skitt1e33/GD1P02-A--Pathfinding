@@ -171,7 +171,7 @@ void Node::setChar(char _print)
 
 void Node::calcDistance(Node* _target)
 {
-    h = abs(_target->getPos().x - pos.x + _target->getPos().y - pos.y);
+    h = abs(_target->getPos().x - pos.x) + abs(_target->getPos().y - pos.y);
     f = g + h;
 }
 

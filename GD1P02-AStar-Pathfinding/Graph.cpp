@@ -292,8 +292,9 @@ void Graph::aStar(int _index)
     open.push_back(current);
     while (current != target)
     {
-        if (open.size() <= 0)
+        if (open.empty())
         {
+            setColour(7,0);
             std::cout << "Error, no path to exit." << std::endl;
             break;
         }
@@ -301,8 +302,8 @@ void Graph::aStar(int _index)
         open.sort(byDist);
 
         open.front()->expand();
-        current->setTileType(PATH);
         current = open.front();
+        current->setTileType(PATH);
         open.pop_front();
         for (int i = 0; i < 8; ++i)
         {
@@ -310,7 +311,7 @@ void Graph::aStar(int _index)
             if (neighbor == nullptr) continue;
             if (neighbor->getTileType() != WALL && !neighbor->isExpanded())
             {
-                float tenG = current->getG() + getManhattan(current, neighbor);
+                float tenG = current->getG() + getDistance(current, neighbor);
                 if (std::find(open.begin(), open.end(), neighbor) != open.end())
                 {
                     if (tenG >= neighbor->getG()) continue;
@@ -322,9 +323,12 @@ void Graph::aStar(int _index)
 
                 neighbor->setPrevPath(current);
                 neighbor->setG(tenG);
-                neighbor->calcDistance(current);
             }
         }
+
+        
+        //printMap(_index);
+        //system("cls");
     }
 
     Node* reconstructor = target;
@@ -363,14 +367,8 @@ void Graph::getItems(std::vector<Node*>& _itemList, int _index)
 void Graph::showNeighbors(int _x, int _y)
 {
     Node* node = levels[0]->nodes[_x+(20*_y)];
-    node->setChar('X');
-    int count = 0;
-    for (int i = 0; i < 8; ++i)
-    {
-        Node* neighbor = node->getNeighbor(i);
-        if (neighbor == nullptr) continue;
-        neighbor->setTileType(PATH);
-        count++;
-    }
-    std::cout << "node has " << count << " neighbors" << std::endl;
+    node->setChar('O');
+
+    std::cout << "node  " << node->getPos().x << ", " << node->getPos().y << std::endl;
+    std::cout << "H value: " << node->h << std::endl;
 }
