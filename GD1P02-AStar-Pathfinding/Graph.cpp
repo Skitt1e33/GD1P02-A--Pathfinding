@@ -258,9 +258,9 @@ void Graph::breadthFirst(int _index)
 }
 
 
-bool byDist(Node* _n1, Node* _n2)
+bool byDist(const Node* _n1, const Node* _n2)
 {
-    return _n1->getF() < _n2->getF();
+    return _n1->f < _n2->f;
 }
 
 void Graph::aStar(int _index)
@@ -297,15 +297,9 @@ void Graph::aStar(int _index)
             std::cout << "Error, no path to exit." << std::endl;
             break;
         }
-        std::cout << "open queue unsorted: ";
-        for (auto const& v : open)
-            std::cout << "(x: " << v->getPos().x << " y: " << v->getPos().y << "), ";
-        std::cout << std::endl;
-        std::sort(open.begin(), open.end(), [](const Node* a, const Node* b) {return a->f < b->f; });
-        std::cout << "open queue sorted: ";
-        for (auto const& v : open)
-            std::cout << "(x: " << v->getPos().x << " y: " << v->getPos().y << "), ";
-        std::cout << std::endl;
+
+        open.sort(byDist);
+
         open.front()->expand();
         current->setTileType(PATH);
         current = open.front();
