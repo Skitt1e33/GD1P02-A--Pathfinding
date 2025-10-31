@@ -126,11 +126,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="STLIncludes.h" />
   </ItemGroup>

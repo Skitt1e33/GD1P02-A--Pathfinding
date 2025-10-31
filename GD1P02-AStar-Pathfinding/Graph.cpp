@@ -308,22 +308,37 @@ void Graph::aStar(int _index)
         for (int i = 0; i < 8; ++i)
         {
             Node* neighbor = current->getNeighbor(i);
-            if (neighbor == nullptr) continue;
-            if (neighbor->getTileType() != WALL && !neighbor->isExpanded())
-            {
-                float tenG = current->getG() + getDistance(current, neighbor);
-                if (std::find(open.begin(), open.end(), neighbor) != open.end())
-                {
-                    if (tenG >= neighbor->getG()) continue;
-                }
-                else 
-                {
-                    open.push_front(neighbor);
-                }
+            std::list<Node*> offLimits;
 
-                neighbor->setPrevPath(current);
-                neighbor->setG(tenG);
+            if (neighbor == nullptr) continue;
+
+            if (neighbor->getTileType() == WALL)
+            {
+                offLimits.push_front(neighbor);
+                if (i%2 != 1)
+                {
+                    for (int i = 0; i < 4; ++i)
+                    {
+                        offLimits.push_front(neighbor->getNeighbor(i * 2));
+                    }
+                }
             }
+
+            if (std::find(offLimits.begin(), offLimits.end(), neighbor) != offLimits.end() ||
+                neighbor->isExpanded()
+                ) continue;
+            float tenG = current->getG() + getDistance(current, neighbor);
+            if (std::find(open.begin(), open.end(), neighbor) != open.end())
+            {
+                if (tenG >= neighbor->getG()) continue;
+            }
+            else 
+            {
+                open.push_front(neighbor);
+            }
+
+            neighbor->setPrevPath(current);
+            neighbor->setG(tenG);
         }
 
         
